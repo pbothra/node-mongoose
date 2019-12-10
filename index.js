@@ -13,10 +13,21 @@ connect.then((db) => {
         })
         .then((dish) => {
             console.log(dish);
-            return Dishes.find({}).exec();
+            return Dishes.findByIdAndUpdate(dish._id, {
+                $set: { description: 'Updated Test' }
+            }, { new: true }).exec();
         })
-        .then((dishes) => {
+        .then((dish) => {
             console.log(dishes);
+            dish.comments.push({
+                rating: 5,
+                comment: 'I Test',
+                author: 'Rahul Dravid'
+            });
+            return dish.save();
+        })
+        .then((dish) => {
+            console.log(dish);
 
             return Dishes.remove({});
         })
