@@ -8,8 +8,8 @@ const connect = mongoose.connect(url);
 connect.then((db) => {
     console.log('Connected to Sever');
     Dishes.create({
-            name: 'Uthapizza',
-            description: 'test'
+            name: 'Uthapizza1',
+            description: 'test1'
         })
         .then((dish) => {
             console.log(dish);
@@ -18,7 +18,7 @@ connect.then((db) => {
             }, { new: true }).exec();
         })
         .then((dish) => {
-            console.log(dishes);
+            console.log(dish);
             dish.comments.push({
                 rating: 5,
                 comment: 'I Test',
